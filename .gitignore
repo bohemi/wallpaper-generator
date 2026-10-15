@@ -1,0 +1,37 @@
+# Environments
+.env
+*.env
+scraper/.env
+
+# Local binaries & compiled artifacts
+server
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+
+# Go test / coverage outputs
+*.out
+*.test
+
+# Python / Virtual Environment (from uv & Playwright)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+scraper/.venv/
+.uv/
+
+# Playwright cache / browsers
+.playwright/
+
+# OS & Editor generated files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Docker persistent local volume data (if any was created locally)
+*.db-journal

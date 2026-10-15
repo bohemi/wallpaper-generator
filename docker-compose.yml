@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: wallpaper_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: wallpaper_admin
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: wallpaper_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - wallpaper_net
+
+  redis:
+    image: redis:7-alpine
+    container_name: wallpaper_redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - wallpaper_net
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wallpaper_backend
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      # Inside Docker network, refer to containers by service name rather than localhost
+      - DB_URL=postgres://wallpaper_admin:mysecretpassword@postgres:5432/wallpaper_db?sslmode=disable
+      - REDIS_ADDR=redis:6379
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - wallpaper_net
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  wallpaper_net:
+    driver: bridge
