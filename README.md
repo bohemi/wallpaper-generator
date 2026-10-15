@@ -13,3 +13,20 @@ I have created a web scraper with the help from AI which scrapes wallpapers from
 ### The idea
 
 This is a solution for myslef for now. I love the pinterest ideas and always find myself putting those wallpapers in my mobile phone. It is a good opportunity to learn about web scraping and automating the wallpaper pulling and setting on the mobile phone.
+
+<br clear="left"/>
+
+## Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) & [Docker Compose](https://docs.docker.com/compose/)
+- [uv](https://github.com/astral-sh/uv) (for running the Python scraper)
+- [golang-migrate](https://github.com/golang-migrate/migrate) CLI (optional, can be run via Docker)
+
+---
+
+## Quickstart
+
+### 1. Clone the Repository
+```bash
+git clone <YOUR_REPO_URL>
+cd wallpaper-generator
