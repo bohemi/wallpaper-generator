@@ -28,5 +28,5 @@ This is a solution for myslef for now. I love the pinterest ideas and always fin
 
 ### 1. Clone the Repository
 ```bash
-git clone <YOUR_REPO_URL>
+git clone <https://github.com/bohemi/wallpaper-generator.git>
 cd wallpaper-generator
